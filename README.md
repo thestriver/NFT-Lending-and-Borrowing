@@ -19,7 +19,7 @@ To use this smart contract:
 
 1. Clone the repository:
     ```bash
-    git clone [Your-Repository-URL]
+    git clone https://github.com/thestriver/NFT-Lending-and-Borrowing
     ```
 
 2. Navigate to the project directory:
@@ -36,22 +36,34 @@ To use this smart contract:
 
 ### Deploying the Contract
 
-Deploy the contract to the Solana network using Anchor:
+Deploy the contract to the Solana Devnet network using Anchor:
 
 ```bash
-anchor deploy
+anchor deploy --provider.cluster devnet
+```
+
+Make sure you edit Anchor.toml accordingly
+```
+[programs.localnet]
+nft_lend_borrow = "<Address>"
+
+[programs.devnet]
+nft_lend_borrow = "<Address>"
+
+[provider]
+cluster = "Devnet"
 ```
 
 ### Interacting with the Contract
 Use the provided client script or integrate with your frontend application.
 
-Contract Functions
-create_pool(collection_id: Pubkey, duration: i64): Create a new lending pool.
-offer_loan(offer_amount: u64): Offer a loan in a pool.
-withdraw_offer(minimum_balance_for_rent_exemption: u64): Withdraw a loan offer.
-borrow(minimum_balance_for_rent_exemption: u64): Borrow against an NFT.
-repay(): Repay an outstanding loan.
-liquidate(): Liquidate an overdue loan.
+## Contract Functions
+- create_pool(collection_id: Pubkey, duration: i64): Create a new lending pool.
+- offer_loan(offer_amount: u64): Offer a loan in a pool.
+- withdraw_offer(minimum_balance_for_rent_exemption: u64): Withdraw a loan offer.
+- borrow(minimum_balance_for_rent_exemption: u64): Borrow against an NFT.
+- repay(): Repay an outstanding loan.
+- liquidate(): Liquidate an overdue loan.
 
 ### Testing
 Run the test suite to ensure everything is working correctly:
